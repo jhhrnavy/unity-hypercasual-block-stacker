@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 Debug.Log("Touch Screen");
+                FindObjectOfType<BlockSpawner>().CurrentBlock.GetComponent<BlockCollision>()?.FixBlock();
             }
         }
     }
