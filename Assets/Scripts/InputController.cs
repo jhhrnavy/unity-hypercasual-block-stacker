@@ -5,7 +5,7 @@ public class InputController : MonoBehaviour
 {
     void Update()
     {
-        // UI ¿ä¼Ò°¡ ¾Æ´Ñ °ÔÀÓ ¿ÀºêÁ§Æ®¿¡ ´ëÇÑ ÅÍÄ¡¸¸ Ã³¸®
+        // UI ìš”ì†Œê°€ ì•„ë‹Œ ê²Œìž„ ì˜¤ë¸Œì íŠ¸ì— ëŒ€í•œ í„°ì¹˜ë§Œ ì²˜ë¦¬
         if (Input.touchCount > 0 && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         {
             Touch touch = Input.GetTouch(0);
@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 Debug.Log("Touch Screen");
-                FindObjectOfType<BlockSpawner>().CurrentBlock.GetComponent<BlockCollision>()?.FixBlock();
+                InputEvents.InvokeOnTouch();
             }
         }
     }
