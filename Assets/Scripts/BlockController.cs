@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
-    public BlockSpawner _blockSpawner;
-
-    public BlockController(BlockSpawner blockSpawner)
-    {
-        _blockSpawner = blockSpawner;
-    }
+    [SerializeField]
+    private BlockSpawner _blockSpawner;
 
     private void OnEnable()
     {
@@ -28,6 +24,4 @@ public class BlockController : MonoBehaviour
 
         currentBlock.GetComponent<BlockCollision>()?.FixBlock();
     }
-
-
 }
