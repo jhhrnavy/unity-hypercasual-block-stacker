@@ -16,6 +16,7 @@ public class BlockCollision : MonoBehaviour
         { 
             Destroy(GetComponent<Rigidbody>());
             block.IsFixed = true;
+            this.enabled = false;
 
             //FindObjectOfType<BlockSpawner>()?.SpawnNewBlock();
         }
@@ -23,8 +24,8 @@ public class BlockCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // ÀÌ¹Ì °íÁ¤µÈ ºí·ÏÀº Ãæµ¹ Ã³¸®¸¦ ÇÏÁö ¾ÊÀ½
-        if (block.IsFixed) return;
+        // ì´ë¯¸ ê³ ì •ëœ ë¸”ë¡ì€ ì¶©ëŒ ì²˜ë¦¬ë¥¼ í•˜ì§€ ì•ŠìŒ 
+        if (block == null || block.IsFixed) return;
 
         if (other.gameObject.CompareTag("Block"))
         {
@@ -35,14 +36,14 @@ public class BlockCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (block.IsFixed) return;
+        if (block == null || block.IsFixed) return;
 
         if (other.gameObject.CompareTag("Block"))
         {
             float currentBlockTop = transform.position.y + transform.localScale.y * 0.5f;
             float previousBlockTop = other.gameObject.transform.position.y + other.gameObject.transform.localScale.y * 0.5f;
 
-            if (previousBlockTop < currentBlockTop) // Ç¥¸éº¸´Ù ¾Æ·¡·Î ³»·Á°¡¸é Á¾·á
+            if (previousBlockTop < currentBlockTop) // í‘œë©´ë³´ë‹¤ ì•„ë˜ë¡œ ë‚´ë ¤ê°€ë©´ ì¢…ë£Œ
             {
                 Debug.Log("Now!");
             }
